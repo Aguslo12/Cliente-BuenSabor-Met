@@ -1,4 +1,5 @@
 import { IArticuloManufacturadoDetalle } from "./ArticuloManufacturadoDetalle";
+import { ICategoria } from "./Categoria";
 import { IImagen } from "./Imagen";
 import { IUnidadMedida } from "./UnidadMedida";
 
@@ -14,5 +15,5 @@ export interface IArticuloManufacturado {
   articuloManufacturadoDetalles: IArticuloManufacturadoDetalle[];
   stock: number;
   eliminado: boolean;
-  idCategoria: number;
+  categoria: ICategoria;
 }

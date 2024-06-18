@@ -14,6 +14,7 @@ const CardArticulo: FC<IArticuloManufacturado> = ({
   tiempoEstimadoMinutos,
   descripcion,
   preparacion,
+  categoria,
   unidadMedida,
   articuloManufacturadoDetalles,
 }) => {
@@ -22,6 +23,9 @@ const CardArticulo: FC<IArticuloManufacturado> = ({
       {imagenes !== undefined && imagenes.length >= 1 && (
         <figure>
           <img src={imagenes[0].url} alt={`Foto de ${denominacion}`} className="w-full" />
+          <div className="absolute top-0 right-0 bg-red-600 rounded-t-none rounded-r-none text-white p-2 rounded-md cursor-pointer hover:bg-opacity-90 transition-all">
+            {categoria.denominacion}
+          </div>
         </figure>
       )}
       <div className="">

@@ -5,12 +5,23 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/redux";
 import { setIdEmpresa } from "../../../redux/slices/idEmpresa";
 
-export const CardEmpresa: FC<IEmpresaShort> = ({ nombre, imagenes, id }) => {
+export const CardEmpresa: FC<IEmpresaShort> = ({ nombre, imagenes, id,cuil,eliminado,razonSocial,sucursales }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const detalle: IEmpresaShort = {
+    id: id,
+  nombre: nombre,
+  razonSocial: razonSocial,
+  cuil: cuil,
+  eliminado: eliminado,
+  imagenes: imagenes,
+  sucursales: sucursales,
+  }
+
   function pushCard(nombre: string) {
     dispatch(setIdEmpresa(String(id)));
+    sessionStorage.setItem('empresa',JSON.stringify(detalle))
     const idEmpresa = id;
     navigate(`/${idEmpresa}/sucursales`, { state: { nombre } });
   }

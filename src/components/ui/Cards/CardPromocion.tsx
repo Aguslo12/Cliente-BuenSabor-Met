@@ -28,9 +28,6 @@ export const CardPromocion: FC<IPromosShort> = ({
   const [isAvailable, setIsAvailable] = useState<boolean>(false);
   const backend = new BackendMethods();
 
-  console.log("DETALLESSSS")
-  console.log(detalles)
-
   useEffect(() => {
     const traerDatos = async () => {
       const res: IPromos = (await backend.getById(
@@ -105,7 +102,7 @@ export const CardPromocion: FC<IPromosShort> = ({
   };
 
   return (
-    <div className="card flex flex-row w-[600px] bg-base-100 h-[220px] rounded-md shadow hover:scale-105 cursor-pointer transition-all m-5">
+    <div className="card flex flex-row w-[600px] bg-base-100 h-[220px] rounded-md shadow-md hover:scale-105 cursor-pointer transition-all m-5">
       {imagenes !== undefined && imagenes.length >= 1 && (
         <figure className="rounded-r-none">
           <img src={imagenes[0].url} alt="promo" className="w-full rounded rounded-r-none h-full" />
@@ -129,35 +126,11 @@ export const CardPromocion: FC<IPromosShort> = ({
           </div>
           <div className="w-full justify-around flex">
             <button className="btn btn-error bg-red-600 text-white" onClick={() => document.getElementById(`my_modal_${id}`).showModal()}>Ver detalle</button>
-          <div className=" items-end flex w-min border rounded-xl">
-            <button
-              className="btn bg-white hover:bg-white text-red-600 border-none rounded-l-xl rounded-r-none text-sm disabled:bg-white disabled:text-slate-300"
-              onClick={eliminar}
-              disabled={cantidad === 0}
-            >
-              <FaMinus className="bg-white" />
-            </button>
-            <button
-              className="btn bg-white hover:bg-white text-red-600 border-none rounded-r-xl rounded-l-none text-sm disabled:bg-white disabled:text-slate-300"
-              onClick={agregar}
-              disabled={!isAvailable}
-            >
-              <FaPlus />
-            </button>
-            <div
-              className={`bg-custom-green m-2 items-center flex flex-row font-medium text-2xl justify-center transition-all ${
-                cantidad >= 1 ? "text-red-600 " : "text-gray-600 "
-              }`}
-            >
-              <BsFillCartFill className="text-2xl mx-2" />
-              <h1 className={`w-8 ${cantidad >= 1 || "opacity-0"}`}>{cantidad}</h1>
-            </div>
-          </div>
           </div>
         </div>
         <div>
         <dialog id={`my_modal_${id}`} className="modal">
-          <div className="modal-box max-w-[600px] h-full max-h-[680px]">
+          <div className="modal-box max-w-[600px] h-min max-h-[680px]">
             <form method="dialog">
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                 ✕

@@ -14,6 +14,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'; // No olvides importar el CSS
 import SubTienda from "../pages/SubTienda/SubTienda";
 import Articulos from "../pages/Articulos/Articulos";
+import { EleccionInicio } from "../pages/EleccionInicio/EleccionInicio";
 
 const AppRouter = () => {
   return (
@@ -33,6 +34,7 @@ const AppRouter = () => {
               path="/:idEmpresa/sucursales"
               element={<SucursalInicio />}
             ></Route>
+            <Route path="/PromoOCategoria" element={<EleccionInicio/>}></Route>
             <Route
               path="/:idEmpresa/sucursales/categorias/:idSucursal"
               element={<Tienda />}

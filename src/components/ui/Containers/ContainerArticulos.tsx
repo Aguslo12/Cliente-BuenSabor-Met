@@ -5,6 +5,7 @@ import CardArticulo from "../Cards/CardArticulo";
 import { useAppSelector } from "../../../hooks/redux";
 import { IArticuloInsumo } from "../../../types/ArticuloInsumo";
 import CardArticuloInsumo from "../Cards/CardArticuloInsumo";
+import { ISucursal } from "../../../types/Sucursal";
 
 export const ContainerArticulos = () => {
   const backend = new BackendMethods();
@@ -12,7 +13,15 @@ export const ContainerArticulos = () => {
   const [articulosManufacturados, setArticulosManufacturados] = useState<IArticuloManufacturado[]>([]);
   const [articulosInsumos, setArticulosInsumos] = useState<IArticuloInsumo[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const storedSucursal = sessionStorage.getItem("sucursal");
+  let sucursal: ISucursal | null = null;
 
+  if (storedSucursal) {
+    sucursal = JSON.parse(storedSucursal) as ISucursal;
+  }
+
+  console.log("EL ID DE LA FUCKIN SUCURSAL BRO")
+  console.log(sucursal?.id)
   const idCategoria = useAppSelector((state) => state.GlobalCategory.selected);
 
   useEffect(() => {
@@ -28,7 +37,7 @@ export const ContainerArticulos = () => {
       )) as IArticuloInsumo[];
 
       const articulosInsFiltrados: IArticuloInsumo[] = ress.filter(
-        //@ts-expect-error DA ERROR PORQUE EL ARTICULO QUE TRAE EL GET NO TIENE IDCATEGORÍA, TIENE CATEGORÍA
+
         (articulo) => articulo.categoria.id === idCategoria
       );
 
@@ -37,7 +46,6 @@ export const ContainerArticulos = () => {
       );
 
       const articulosFiltrados: IArticuloManufacturado[] = res.filter(
-        //@ts-expect-error DA ERROR PORQUE EL ARTICULO QUE TRAE EL GET NO TIENE IDCATEGORÍA, TIENE CATEGORÍA
         (articulo) => articulo.categoria.id === idCategoria
       );
 
@@ -48,8 +56,8 @@ export const ContainerArticulos = () => {
   }, [idCategoria]);
 
   return (
-    <div className="pt-10">
-      <div className="flex flex-wrap justify-center items-center mt-16 md:p-5 md:m-10">
+    <div className="pt-2">
+      <div className="flex flex-wrap justify-center items-center mt-5 md:p-5 ">
         {loading ? (
           <div className="h-[430px] w-[1500px] items-center flex pb-20 justify-center">
             <div className="flex items-center justify-center h-[500px] text-3xl">
@@ -73,7 +81,7 @@ export const ContainerArticulos = () => {
                     eliminado={articulo.eliminado}
                     esParaElaborar={articulo.esParaElaborar}
                     id={articulo.id}
-                    idCategoria={articulo.idCategoria}
+                    categoria={articulo.categoria}
                     imagenes={articulo.imagenes}
                     precioCompra={articulo.precioCompra}
                     precioVenta={articulo.precioVenta}
@@ -98,7 +106,7 @@ export const ContainerArticulos = () => {
                     tiempoEstimadoMinutos={articulo.tiempoEstimadoMinutos}
                     unidadMedida={articulo.unidadMedida}
                     key={articulo.id}
-                    idCategoria={articulo.idCategoria}
+                    categoria={articulo.categoria}
                   />
                 ))}
               </>

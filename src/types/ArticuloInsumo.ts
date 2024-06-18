@@ -1,3 +1,4 @@
+import { ICategoria } from "./Categoria";
 import { IImagen } from "./Imagen";
 import { IUnidadMedida } from "./UnidadMedida";
 
@@ -13,5 +14,5 @@ export interface IArticuloInsumo {
   stockMinimo: number;
   esParaElaborar: boolean;
   eliminado: boolean;
-  idCategoria: number;
+  categoria: ICategoria;
 }

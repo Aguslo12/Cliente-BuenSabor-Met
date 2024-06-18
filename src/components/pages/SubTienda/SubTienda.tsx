@@ -16,7 +16,9 @@ const SubTienda = () => {
           <div className="flex flex-row flex-wrap justify-center">
           <ContainerSubCategoria idCategoriaPadre={Number(idCategoria)}/>
           </div>
+          <p className="text-3xl text-start font-semibold flex p-5 text-red-500">Artículos</p>
           <ContainerArticulos/>
+        
         </div>
       </div>
     </div>
