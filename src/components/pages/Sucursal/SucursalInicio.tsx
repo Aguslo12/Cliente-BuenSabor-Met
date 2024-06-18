@@ -1,13 +1,7 @@
 import React from "react";
 import ContainerSucursal from "../../ui/Containers/ContainerSucursal";
-import { useLocation } from "react-router-dom";
 
 const SucursalInicio = () => {
-  const location = useLocation();
-
-  const nombreEmpresa = location?.state?.nombre;
-
-  console.log(nombreEmpresa);
 
   return (
     <div className="flex h-auto justify-center w-screen pt-24">

@@ -12,6 +12,8 @@ import Tienda from "../pages/Tienda/Tienda";
 import { Navbar } from "../ui/Navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'; // No olvides importar el CSS
+import SubTienda from "../pages/SubTienda/SubTienda";
+import Articulos from "../pages/Articulos/Articulos";
 
 const AppRouter = () => {
   return (
@@ -35,6 +37,8 @@ const AppRouter = () => {
               path="/:idEmpresa/sucursales/categorias/:idSucursal"
               element={<Tienda />}
             />
+            <Route path="/subCategorias/:idCategoria" element={<SubTienda/>}></Route>
+            <Route path="/articulos" element={<Articulos/>}></Route>
             <Route path="/registrarse" element={<Register/>}></Route>
             <Route path="/iniciarSesion" element={<Login/>}></Route>
           </Routes>

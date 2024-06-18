@@ -1,3 +1,5 @@
+import { ICategoriaShortDto } from "./CategoriaShortDto";
+
 export interface ICategoriaShort {
   id: number;
   denominacion: string;
@@ -5,5 +7,5 @@ export interface ICategoriaShort {
   eliminado: boolean;
   esInsumo: boolean;
   esPadre: boolean;
-  // subCategorias: ICategoria[];
+  subCategorias: ICategoriaShortDto[];
 }

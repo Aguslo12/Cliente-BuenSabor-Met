@@ -1,18 +1,17 @@
 import React, { FC } from "react";
-import { ICategoriaShort } from "../../../types/ShortDtos/CategoriaShort";
 import { PiBowlFood } from "react-icons/pi";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { setCategory } from "../../../redux/slices/globalCategory";
 import { Link } from "react-router-dom";
+import { ICategoriaShortDto } from "../../../types/ShortDtos/CategoriaShortDto";
 import { FaChevronRight } from "react-icons/fa";
 
-const CardCategoria: FC<ICategoriaShort> = ({
+const CardSubCategoria: FC<ICategoriaShortDto> = ({
   denominacion,
   eliminado,
   esInsumo,
   esPadre,
   id,
-  idSucursal,
   subCategorias,
 }) => {
   const dispatch = useAppDispatch();
@@ -23,7 +22,7 @@ const CardCategoria: FC<ICategoriaShort> = ({
     dispatch(setCategory(id));
   };
 
-  return esPadre === true && eliminado === false ? (
+  return esPadre === false && eliminado === false ? (
     subCategorias.length <= 0 ? (
       <Link
         to={"/articulos"}
@@ -39,11 +38,11 @@ const CardCategoria: FC<ICategoriaShort> = ({
       <Link
         to={`/subCategorias/${id}`}
         className={`shadow-md rounded-md cursor-pointer m-5 p-5 flex flex-col items-center justify-center hover:bg-slate-100 hover:text-red-500
-                    `}
+                `}
         onClick={seleccionarCategoria}
       >
-        <span className="flex flex-row space-x-3 items-center justify-center text-center px-4">
-          <h1 className="font-semibold ">{denominacion} </h1>
+        <span className="flex flex-row items-center justify-center text-center px-4">
+          <h1 className="font-semibold ">{denominacion}</h1>
           <FaChevronRight />
         </span>
       </Link>
@@ -53,4 +52,4 @@ const CardCategoria: FC<ICategoriaShort> = ({
   );
 };
 
-export default CardCategoria;
+export default CardSubCategoria;

@@ -1,10 +1,11 @@
+import { IImagen } from "./Imagen";
 import { IUnidadMedida } from "./UnidadMedida";
 
 export interface IArticuloInsumo {
   id: number;
   denominacion: string;
   precioVenta: number;
-  imagenes: FileList;
+  imagenes: IImagen[];
   unidadMedida: IUnidadMedida;
   precioCompra: number;
   stockActual: number;

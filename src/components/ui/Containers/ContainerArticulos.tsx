@@ -48,8 +48,8 @@ export const ContainerArticulos = () => {
   }, [idCategoria]);
 
   return (
-    <div className="pt-24">
-      <div className="flex flex-wrap justify-center items-center p-5 m-10">
+    <div className="pt-10">
+      <div className="flex flex-wrap justify-center items-center mt-16 md:p-5 md:m-10">
         {loading ? (
           <div className="h-[430px] w-[1500px] items-center flex pb-20 justify-center">
             <div className="flex items-center justify-center h-[500px] text-3xl">
@@ -60,8 +60,8 @@ export const ContainerArticulos = () => {
         ) : (
           <>
             {articulosInsumos.length <= 0 && articulosManufacturados.length <= 0 ? (
-              <div className="h-[430px] w-[1500px] items-center flex pb-20 justify-center">
-                <div className="text-4xl bg-red-600 text-white rounded p-5">
+              <div className="h-[100px] md:h-[430px] md:w-[1500px] items-center flex pb-20 justify-center">
+                <div className="text-base  md:text-4xl bg-red-600 text-white rounded p-5">
                   No hay productos disponibles
                 </div>
               </div>

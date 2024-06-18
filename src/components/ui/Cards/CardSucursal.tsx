@@ -3,7 +3,7 @@ import { ISucursalShort } from "../../../types/ShortDtos/SucursalShort";
 import { Link } from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 import { useCarrito, useSucursalContext } from "../../../hooks/useContext";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useAppDispatch } from "../../../hooks/redux";
 import { setGlobalSucursal } from "../../../redux/slices/globalSucursal";
 
 const CardSucursal: FC<ISucursalShort> = ({
@@ -19,9 +19,7 @@ const CardSucursal: FC<ISucursalShort> = ({
 }) => {
 
   const { updateSucursal, suc } = useSucursalContext();
-  const { limpiarCarrito } = useCarrito()
-
-  const selectedIdSucursal = useAppSelector((state) => state.GlobalSucursal.selected)
+  const { limpiarCarrito } = useCarrito();
 
   const dispatch = useAppDispatch();
 
@@ -39,7 +37,6 @@ const CardSucursal: FC<ISucursalShort> = ({
       imagenes: imagenes,
       nombre: nombre,
     }
-    console.log(`sucId= ${suc?.id} detalleId= ${detalle.id}`)
     if(suc?.id !== detalle.id){
       limpiarCarrito()
       sessionStorage.setItem('sucursal',JSON.stringify(detalle))
