@@ -38,7 +38,7 @@ export const ContainerPromocion = () => {
 
   return (
     <div className="pt-2">
-      <div className="flex flex-wrap justify-center items-center p-5 m-5">
+      <div className="flex flex-wrap justify-center items-center p-3">
         {loading ? (
           <div className="h-[430px] w-[1500px]  items-center flex pb-20 justify-center">
             <div className="flex items-center justify-center h-[500px] text-3xl">

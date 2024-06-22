@@ -45,7 +45,7 @@ const ContainerSubCategoria: FC<ContainerSubCategoriaNum> = ({idCategoriaPadre})
 
   return (
           <div className="flex flex-wrap items-start justify-start">
-            <Link to={`/${empresa?.id}/sucursales/categorias/${sucursal?.id}`} className="shadow-md rounded-md cursor-pointer m-5 p-3 bg-red-600 border-red-950 border-[2px] text-white transition-all flex flex-row space-x-3 items-center justify-center hover:bg-slate-100 hover:text-red-500">
+            <Link to={`/${empresa?.id}/sucursales/categorias/${sucursal?.id}`} className="shadow-md rounded-md cursor-pointer text-sm md:text-base p-1 px-2 m-2 md:m-3 md:p-2 bg-red-600 border-red-950 border-[2px] text-white transition-all flex flex-row space-x-3 items-center justify-center hover:bg-slate-100 hover:text-red-500">
             <FaChevronLeft /><p className="font-semibold">Atrás</p>
             </Link>
             {categoria?.subCategorias.map((subCategoria) => (

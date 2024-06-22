@@ -9,6 +9,8 @@ interface SucursalContextType {
   cliente: ICliente | undefined;
   getCliente: (cliente: ICliente | undefined) => void;
   pedidoEnviado: (estado: number) => void;
+  categoria: string;
+  elegirCategoria: (categoria: string) => void;
 }
 
 export const SucursalContext = createContext<SucursalContextType | undefined>(
@@ -19,6 +21,7 @@ export function SucursalContextProvider({ children }: { children: ReactNode }) {
   const [suc, setSuc] = useState<ISucursalShort | null>(null);
   const [str, setStr] = useState<number>(0);
   const [cliente, setCliente] = useState<ICliente | undefined>()
+  const [ categoria, setCategoria ] = useState<string>("")
 
   const getCliente = (cliente: ICliente | undefined) => {
     setCliente(cliente)
@@ -33,8 +36,12 @@ export function SucursalContextProvider({ children }: { children: ReactNode }) {
     setStr(estado);
   }
 
+  const elegirCategoria = (categoria: string) => {
+    setCategoria(categoria)
+  }
+
   return (
-    <SucursalContext.Provider value={{ suc, updateSucursal, pedidoEnviado, str, cliente, getCliente }}>
+    <SucursalContext.Provider value={{ suc, updateSucursal, pedidoEnviado, str, cliente, getCliente, categoria, elegirCategoria }}>
       {children}
     </SucursalContext.Provider>
   );

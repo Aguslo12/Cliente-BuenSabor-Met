@@ -20,8 +20,6 @@ export const ContainerArticulos = () => {
     sucursal = JSON.parse(storedSucursal) as ISucursal;
   }
 
-  console.log("EL ID DE LA FUCKIN SUCURSAL BRO")
-  console.log(sucursal?.id)
   const idCategoria = useAppSelector((state) => state.GlobalCategory.selected);
 
   useEffect(() => {
@@ -57,7 +55,7 @@ export const ContainerArticulos = () => {
 
   return (
     <div className="pt-2">
-      <div className="flex flex-wrap justify-center items-center mt-5 md:p-5 ">
+      <div className="flex flex-wrap justify-center items-center mt-10 md:p-5 ">
         {loading ? (
           <div className="h-[430px] w-[1500px] items-center flex pb-20 justify-center">
             <div className="flex items-center justify-center h-[500px] text-3xl">
@@ -68,7 +66,7 @@ export const ContainerArticulos = () => {
         ) : (
           <>
             {articulosInsumos.length <= 0 && articulosManufacturados.length <= 0 ? (
-              <div className="h-[100px] md:h-[430px] md:w-[1500px] items-center flex pb-20 justify-center">
+              <div className="h-[100px] md:h-[430px] md:w-[1500px] items-center flex md:pb-20 justify-center">
                 <div className="text-base  md:text-4xl bg-red-600 text-white rounded p-5">
                   No hay productos disponibles
                 </div>

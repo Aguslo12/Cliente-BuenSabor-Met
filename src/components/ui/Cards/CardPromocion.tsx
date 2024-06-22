@@ -39,9 +39,7 @@ export const CardPromocion: FC<IPromosShort> = ({
   }, [id]);
 
   useEffect(() => {
-    const itemInCart = cart.find(
-      (item) => item.promocion?.id === id
-    );
+    const itemInCart = cart.find((item) => item.promocion?.id === id);
     if (itemInCart) {
       setCantidad(itemInCart.cantidad);
     }
@@ -53,14 +51,17 @@ export const CardPromocion: FC<IPromosShort> = ({
       const currentHour = currentDate.getHours();
       const currentMinute = currentDate.getMinutes();
 
-      const [startHour, startMinute] = horaDesde.split(':').map(Number);
-      const [endHour, endMinute] = horaHasta.split(':').map(Number);
+      const [startHour, startMinute] = horaDesde.split(":").map(Number);
+      const [endHour, endMinute] = horaHasta.split(":").map(Number);
 
       const currentTotalMinutes = currentHour * 60 + currentMinute;
       const startTotalMinutes = startHour * 60 + startMinute;
       const endTotalMinutes = endHour * 60 + endMinute;
 
-      setIsAvailable(currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes);
+      setIsAvailable(
+        currentTotalMinutes >= startTotalMinutes &&
+          currentTotalMinutes <= endTotalMinutes
+      );
     };
 
     checkAvailability();
@@ -102,86 +103,109 @@ export const CardPromocion: FC<IPromosShort> = ({
   };
 
   return (
-    <div className="card flex flex-row w-[600px] bg-base-100 h-[220px] rounded-md shadow-md hover:scale-105 cursor-pointer transition-all m-5">
+    <div className="card flex flex-col w-[166px] bg-base-100 h-min h-max-[400px] border-gray-300 border-[1px] rounded hover:border-black hover:border-[1px] hover:scale-105 cursor-pointer transition-all m-5">
       {imagenes !== undefined && imagenes.length >= 1 && (
         <figure className="rounded-r-none">
-          <img src={imagenes[0].url} alt="promo" className="w-full rounded rounded-r-none h-full" />
+          <img
+            src={imagenes[0].url}
+            alt="promo"
+            className="w-max rounded rounded-b-none h-full"
+          />
         </figure>
       )}
       <div className="w-full flex-col">
-        <div className="flex flex-col mt-2 justify-center w-full items-center">
-          <h2 className="card-title text-3xl">{denominacion}</h2>
-          <p className="text-red-600 font-bold mt-2">${precioPromocional}</p>
+        <div className="flex flex-col mt-2 justify-center text-balance w-full items-center">
+          {detalles.map((detalle) => (
+            <div className="text-black">
+              {detalle.articulosManufacturados ? (
+                <p>
+                  {detalle.cantidad}-
+                  {detalle.articulosManufacturados?.denominacion}
+                </p>
+              ) : (
+                <p>
+                  {detalle.cantidad}-{detalle.insumos?.denominacion}{" "}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
-        <div className="w-full flex-col flex items-center justify-between">
-          <div className="flex w-full flex-col my-5">
-            <div className="flex justify-around">
-              <p className="font-bold text-red-600">Desde las: </p>
-              <p>{horaDesde}</p>
-            </div>
-            <div className="flex justify-around">
-              <p className="font-bold text-red-600">Hasta las: </p>
-              <p>{horaHasta}</p>
-            </div>
-          </div>
-          <div className="w-full justify-around flex">
-            <button className="btn btn-error bg-red-600 text-white" onClick={() => document.getElementById(`my_modal_${id}`).showModal()}>Ver detalle</button>
+        <div className="w-full flex-row flex items-center my-2 justify-around">
+          <div className="w-full justify-around items-center text-lg flex">
+            <p className="text-red-600 font-bold">${precioPromocional}</p>
+            <button
+              className="btn-link text-xs text-black"
+              onClick={() =>
+                document.getElementById(`my_modal_${id}`).showModal()
+              }
+            >
+              Ver detalle
+            </button>
           </div>
         </div>
         <div>
-        <dialog id={`my_modal_${id}`} className="modal">
-          <div className="modal-box max-w-[600px] h-min max-h-[680px]">
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                ✕
-              </button>
-            </form>
-            <h3 className="font-bold text-lg card-title pb-5">
-              {denominacion}
-            </h3>
-            <div className="flex flex-col">
-              <img
-                src={imagenes[0].url}
-                alt={imagenes[0].name}
-                className="rounded-md max-h-[325px] h-full"
-              />
-              <div className="flex justify-center text-lg font-semibold pt-5 pb-3">
-                <p>Disponible hasta el día {fechaHasta}</p>
-              </div>
-              <div className="flex w-full justify-center flex-col">
-                <p className="text-center font-bold">Incluye</p>
-                <div className="flex flex-row justify-center space-x-2">
-                {detalles.map((detalle) => (
-                  <div className="font-semibold text-red-600">
-                    {detalle.articulosManufacturados ? (
-                      <p>{detalle.cantidad}-{detalle.articulosManufacturados?.denominacion}</p>
-                    ) : (
-                      <p>{detalle.cantidad}-{detalle.insumos?.denominacion} </p>
-                    )}
-                  </div>
-                ))}
+          <dialog id={`my_modal_${id}`} className="modal">
+            <div className="modal-box max-w-[600px] h-min max-h-[680px]">
+              <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <h3 className="font-bold text-lg card-title pb-5">
+                {denominacion}
+              </h3>
+              <div className="flex flex-col">
+                <img
+                  src={imagenes[0].url}
+                  alt={imagenes[0].name}
+                  className="rounded-md max-h-[325px] h-full"
+                />
+                <div className="flex justify-center text-lg font-semibold pt-5 pb-3">
+                  <p>Disponible hasta el día {fechaHasta}</p>
                 </div>
-              </div>
-              <div className="flex flex-col font-bold w-full mt-3 space-y-3">
-                <p className="flex justify-between w-full">
-                  {" "}
-                  Total: <p className="text-red-600">$ {precioPromocional}</p>
-                </p>
                 <div className="flex w-full justify-center flex-col">
-                <p className="text-center font-bold">Disponible en la/s sucursal/es</p>
-                <div className="flex flex-row justify-center space-x-2">
-                {sucursales.map((sucursal) => (
-                  <div className="font-semibold text-red-600">
-                      <p>{sucursal.nombre} {sucursal.domicilio.calle}</p>
+                  <p className="text-center font-bold">Incluye</p>
+                  <div className="flex flex-row justify-center space-x-2">
+                    {detalles.map((detalle) => (
+                      <div className="font-semibold text-red-600">
+                        {detalle.articulosManufacturados ? (
+                          <p>
+                            {detalle.cantidad}-
+                            {detalle.articulosManufacturados?.denominacion}
+                          </p>
+                        ) : (
+                          <p>
+                            {detalle.cantidad}-{detalle.insumos?.denominacion}{" "}
+                          </p>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                ))}
                 </div>
-              </div>
+                <div className="flex flex-col font-bold w-full mt-3 space-y-3">
+                  <p className="flex justify-center w-full">
+                    {" "}
+                    Total: <p className="text-red-600 pl-3">${precioPromocional}</p>
+                  </p>
+                  <div className="flex w-full justify-center flex-col">
+                    <p className="text-center font-bold">
+                      Disponible en la/s sucursal/es
+                    </p>
+                    <div className="flex flex-row justify-center space-x-2">
+                      {sucursales.map((sucursal) => (
+                        <div className="font-semibold text-red-600">
+                          <p>
+                            {sucursal.nombre} {sucursal.domicilio.calle}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </dialog>
-      </div>
+          </dialog>
+        </div>
       </div>
     </div>
   );

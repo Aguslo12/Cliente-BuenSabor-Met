@@ -6,8 +6,6 @@ import { useCarrito } from "../../../hooks/useContext";
 export const ButtonCarrito = () => {
 
   const { cart } = useCarrito();
-  console.log("CARRITO")
-  console.log(cart)
   const [suma, setSuma] = useState<number>(0)
 
   useEffect(() => {
