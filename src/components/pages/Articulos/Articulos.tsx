@@ -5,11 +5,10 @@ import { FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IEmpresaShort } from "../../../types/ShortDtos/EmpresaShort";
 import { ISucursal } from "../../../types/Sucursal";
-import { IoSearchOutline } from "react-icons/io5";
 
 
 const Articulos = () => {
-  const { categoria, busqueda, cambiarBusqueda } = useSucursalContext();
+  const { categoria, cambiarBusqueda } = useSucursalContext();
 
   const storedSucursal = sessionStorage.getItem("sucursal");
   let sucursal: ISucursal | null = null;
@@ -25,6 +24,7 @@ const Articulos = () => {
     empresa = JSON.parse(storedEmpresa) as IEmpresaShort;
   }
 
+  //@ts-expect-error Da error
   const handleChange = (event) => {
     cambiarBusqueda(event.target.value)
   }
