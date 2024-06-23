@@ -14,10 +14,10 @@ export const Conocenos = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-full justify-center items-center space-x-10 flex-row mb-20">
+      <div className="flex w-full justify-center items-center space-y-10 md:space-x-10 flex-col md:flex-row mb-20">
         <div className="flex flex-col">
             <p className="text-red-600 text-4xl text-center py-5 font-promptFont font-semibold">Nuestra Historia</p>
-          <p className="text-lg text-gray-700 mb-6 text-left w-[300px]">
+          <p className="text-lg text-gray-700 mb-6 text-center md:text-left w-[300px]">
             ¡Bienvenidos!
             Ofrecemos los mejores precios del país y una amplia variedad de
             opciones para satisfacer tus antojos. Fundamos este proyecto a
@@ -29,7 +29,7 @@ export const Conocenos = () => {
         <img src="/Icono_Hamburguesa.png" alt="icono_buensabor" />
         <div>
         <p className="text-red-600 text-4xl text-center py-5 font-promptFont font-semibold">Nuestra visión</p>
-          <p className="text-lg text-gray-700 mb-8 text-right w-[300px]">
+          <p className="text-lg text-gray-700 mb-8 text-center md:text-right w-[300px]">
             Nuestro compromiso es brindar la mejor experiencia de usuario, desde
             la navegación por nuestra plataforma hasta la entrega de tus
             pedidos. Nos apasiona la tecnología y la gastronomía, y trabajamos
