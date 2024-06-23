@@ -34,11 +34,11 @@ const SubTienda = () => {
             <p className="items-center flex h-1 w-full bg-red-500"> </p>
           </div>
           <div className="flex justify-center mt-10">
-        <div className="form-control w-[500px]">
+        <div className="form-control flex justify-center w-full items-center md:w-[500px]">
           <input
             type="text"
             placeholder={`Buscar ${categoria}...`}
-            className="input input-bordered rounded w-40 md:w-auto border-red-600 focus:border-red-600"
+            className="input input-bordered rounded w-[250px] md:w-[400px] border-red-600 focus:border-red-600"
             defaultValue={""}
             onChange={handleChange}
           />

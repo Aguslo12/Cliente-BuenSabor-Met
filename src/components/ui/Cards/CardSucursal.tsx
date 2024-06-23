@@ -46,7 +46,7 @@ const CardSucursal: FC<ISucursalShort> = ({
 
   return (
     <Link
-      className="bg-white group transition-all hover:scale-105 rounded-md cursor-pointer overflow-hidden size-40 w-72 m-5 shadow-md"
+      className="bg-white group transition-all hover:scale-105 rounded-md cursor-pointer overflow-hidden size-40 w-72 m-5 shadow-md  border-gray-300 border-[1px] hover:border-gray-900"
       to={`categorias/${id}`}
       onClick={actualizar}
     >

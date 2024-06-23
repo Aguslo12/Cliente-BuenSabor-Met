@@ -10,7 +10,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        josefinSerif : ['Josefin Sans', 'sans-serif']
+        josefinSerif : ['Josefin Sans', 'sans-serif'],
+        promptFont: ['Prompt', 'sans-serif']
       },
       colors: {
         colorPpal: '#d9754a',
@@ -19,7 +20,8 @@ module.exports = {
         backColor: '#e4e3d3'
       },
       backgroundImage: theme => ({
-        'fondo': "url('/fondo.jpg')", // Agrega tu imagen de fondo aquí
+        'fondo': "url('/fondo.png')", // Agrega tu imagen de fondo aquí
+        'fondoConocenos': "url('/fondoConocenos.png')",
       })
     },
   },

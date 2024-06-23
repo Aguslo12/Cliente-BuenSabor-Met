@@ -4,6 +4,7 @@ import { setCategory } from "../../../redux/slices/globalCategory";
 import { Link } from "react-router-dom";
 import { ICategoriaShortDto } from "../../../types/ShortDtos/CategoriaShortDto";
 import { FaChevronRight } from "react-icons/fa";
+import { useSucursalContext } from "../../../hooks/useContext";
 
 const CardSubCategoria: FC<ICategoriaShortDto> = ({
   denominacion,
@@ -14,10 +15,13 @@ const CardSubCategoria: FC<ICategoriaShortDto> = ({
 }) => {
   const dispatch = useAppDispatch();
 
+  const { elegirCategoria } = useSucursalContext()
+
   const idCategoria = useAppSelector((state) => state.GlobalCategory.selected);
 
   const seleccionarCategoria = () => {
     dispatch(setCategory(id));
+    elegirCategoria(denominacion);
   };
 
   return esPadre === false && eliminado === false ? (

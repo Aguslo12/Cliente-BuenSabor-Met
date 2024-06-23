@@ -28,7 +28,7 @@ export const CardEmpresa: FC<IEmpresaShort> = ({ nombre, imagenes, id,cuil,elimi
 
   return (
     <>
-      <div className="bg-white group transition-all hover:scale-105 rounded-md cursor-pointer overflow-hidden size-40 w-72 m-2" onClick={() => pushCard(nombre)}>
+      <div className="bg-white group transition-all hover:scale-105 rounded-md cursor-pointer overflow-hidden size-40 w-72 m-2 mb-10 border-gray-300 border-[1px] hover:border-gray-900" onClick={() => pushCard(nombre)}>
         <div>
           {imagenes.map((foto) => (
             <img src={foto.url} alt={foto.name} className="h-28 w-full" key={foto.url} />

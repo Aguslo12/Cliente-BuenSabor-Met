@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css'; // No olvides importar el CSS
 import SubTienda from "../pages/SubTienda/SubTienda";
 import Articulos from "../pages/Articulos/Articulos";
+import { Empresas } from "../pages/Empresa/Empresas";
+import { Conocenos } from "../pages/Conocenos/Conocenos";
 
 const AppRouter = () => {
   return (
@@ -21,6 +23,8 @@ const AppRouter = () => {
           position={"bottom-right"}/>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/empresas" element={<Empresas/>}></Route>
+            <Route path="/conocenos" element={<Conocenos/>}></Route>
             <Route
               path="/:idEmpresa/sucursales"
               element={<SucursalInicio />}
