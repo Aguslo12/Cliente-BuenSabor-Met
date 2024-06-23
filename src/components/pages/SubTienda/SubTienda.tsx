@@ -6,7 +6,11 @@ import { useSucursalContext } from "../../../hooks/useContext";
 
 const SubTienda = () => {
   const { idCategoria } = useParams();
-  const { categoria } = useSucursalContext();
+  const { categoria,cambiarBusqueda } = useSucursalContext();
+
+  const handleChange = (event) => {
+    cambiarBusqueda(event.target.value)
+  }
 
   return (
     <div className="flex h-auto justify-center w-full pt-24">
@@ -28,6 +32,17 @@ const SubTienda = () => {
             </p>
             <p className="items-center flex h-1 w-full bg-red-500"> </p>
           </div>
+          <div className="flex justify-center mt-10">
+        <div className="form-control w-[500px]">
+          <input
+            type="text"
+            placeholder={`Buscar ${categoria}...`}
+            className="input input-bordered rounded w-40 md:w-auto border-red-600 focus:border-red-600"
+            defaultValue={""}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
           <ContainerArticulos />
         </div>
       </div>

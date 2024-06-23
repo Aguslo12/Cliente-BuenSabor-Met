@@ -1,10 +1,7 @@
 import React, { FC } from "react";
 import { IArticuloManufacturado } from "../../../types/ArticuloManufacturado";
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { useCarrito } from "../../../hooks/useContext";
-import { BackendMethods } from "../../../services/BackendClient";
-import { IDetallePedido } from "../../../types/DetallePedido";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const CardArticulo: FC<IArticuloManufacturado> = ({
   id,
@@ -19,30 +16,35 @@ const CardArticulo: FC<IArticuloManufacturado> = ({
   articuloManufacturadoDetalles,
 }) => {
   return (
-    <div className="card w-80 bg-base-100 h-[330px] rounded-md border shadow hover:scale-105 cursor-pointer transition-all m-5">
+    <div className="card w-[192px] bg-base-100 h-min rounded border-gray-200 border-[1px] hover:border-black hover:scale-105 cursor-pointer transition-all m-5">
       {imagenes !== undefined && imagenes.length >= 1 && (
         <figure>
-          <img src={imagenes[0].url} alt={`Foto de ${denominacion}`} className="w-full" />
-          <div className="absolute top-0 right-0 bg-red-600 rounded-t-none rounded-r-none text-white p-2 rounded-md cursor-pointer hover:bg-opacity-90 transition-all">
-            {categoria.denominacion}
-          </div>
+          <img
+            src={imagenes[0].url}
+            alt={`Foto de ${denominacion}`}
+            className="w-full"
+          />
         </figure>
       )}
-      <div className="">
-        <div className="flex flex-col mt-2 justify-center items-center">
-          <h2 className="card-title text-3xl">{denominacion}</h2>
-          <p className="text-red-600 font-bold">${precioVenta}</p>
+      <div>
+        <div className="flex flex-col space-y-1 mt-2 px-1 justify-start items-start">
+          <h2 className="card-title text-1xl ">{denominacion}</h2>
+          <p className="text-sm font-josefinSerif">{preparacion}</p>
+          <div className="flex flex-row justify-between items-center p-1 w-full">
+            <p className="text-red-600 text-lg font-bold font-josefinSerif ">
+              ${precioVenta}
+            </p>
+            <div
+              className="btn-link text-sm text-red-600 rounded-md cursor-pointer hover:bg-opacity-90 transition-all"
+              onClick={() =>
+                document.getElementById(`my_modal_${id}`).showModal()
+              }
+            >
+              Ver detalle
+            </div>
+          </div>
         </div>
       </div>
-      <div className="flex w-full justify-center p-2">
-        <div
-          className=" bg-red-600 text-white p-2 rounded-md cursor-pointer hover:bg-opacity-90 transition-all"
-          onClick={() => document.getElementById(`my_modal_${id}`).showModal()}
-        >
-          Ver detalle
-        </div>
-      </div>
-
       <div>
         <dialog id={`my_modal_${id}`} className="modal">
           <div className="modal-box max-w-[600px] h-min max-h-[680px]">
@@ -74,7 +76,11 @@ const CardArticulo: FC<IArticuloManufacturado> = ({
                   Precio: <span className="text-red-600">$ {precioVenta}</span>
                 </p>
                 <p className="flex justify-between w-full">
-                  Tiempo de espera aproximado: <span className="text-red-600"> {tiempoEstimadoMinutos} min.</span>
+                  Tiempo de espera aproximado:{" "}
+                  <span className="text-red-600">
+                    {" "}
+                    {tiempoEstimadoMinutos} min.
+                  </span>
                 </p>
                 <div className="flex w-full justify-center flex-col pt-3">
                   <p className="text-center">Preparación</p>

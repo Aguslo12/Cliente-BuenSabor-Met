@@ -14,37 +14,41 @@ const CardArticuloInsumo: FC<IArticuloInsumo> = ({
   precioVenta,
   esParaElaborar,
   stockActual,
-  categoria
+  categoria,
 }) => {
   return (
     <div>
       {esParaElaborar ? (
         <div></div>
       ) : (
-        <div className="card w-80 bg-base-100 h-[330px] rounded-md border shadow hover:scale-105 cursor-pointer transition-all m-5"
-        >
+        <div className="card w-[192px] bg-base-100 h-min rounded border-gray-200 border-[1px] hover:border-black hover:scale-105 cursor-pointer transition-all m-5">
           {imagenes !== undefined && imagenes.length >= 1 && (
-        <figure>
-          <img src={imagenes[0].url} alt={`Foto de ${denominacion}`} className="w-full" />
-          <div className="absolute top-0 right-0 bg-red-600 rounded-t-none rounded-r-none text-white p-2 rounded-md cursor-pointer hover:bg-opacity-90 transition-all">
-            {categoria.denominacion}
+            <figure>
+              <img
+                src={imagenes[0].url}
+                alt={`Foto de ${denominacion}`}
+                className="w-full"
+              />
+            </figure>
+          )}
+          <div>
+          <div className="flex flex-col space-y-1 mt-2 px-1 justify-start items-start">
+          <h2 className="card-title text-1xl ">{denominacion}</h2>
+          <div className="flex flex-row justify-between items-center p-1 w-full">
+            <p className="text-red-600 text-lg font-bold font-josefinSerif ">
+              ${precioVenta}
+            </p>
+            <div
+              className="btn-link text-sm text-red-600 rounded-md cursor-pointer hover:bg-opacity-90 transition-all"
+              onClick={() =>
+                document.getElementById(`my_modal_${id}`).showModal()
+              }
+            >
+              Ver detalle
+            </div>
           </div>
-        </figure>
-      )}
-      <div className="">
-        <div className="flex flex-col mt-2 justify-center items-center">
-          <h2 className="card-title text-3xl">{denominacion}</h2>
-          <p className="text-red-600 font-bold">${precioVenta}</p>
         </div>
-      </div>
-      <div className="flex w-full justify-center p-2">
-        <div
-          className=" bg-red-600 text-white p-2 rounded-md cursor-pointer hover:bg-opacity-90 transition-all"
-          onClick={() => document.getElementById(`my_modal_${id}`).showModal()}
-        >
-          Ver detalle
-        </div>
-      </div>
+          </div>
         </div>
       )}
       <div>
@@ -59,7 +63,7 @@ const CardArticuloInsumo: FC<IArticuloInsumo> = ({
               {denominacion}
             </h3>
             <div className="flex flex-col">
-            <Carousel showThumbs={false} dynamicHeight={true}>
+              <Carousel showThumbs={false} dynamicHeight={true}>
                 {imagenes.map((imagen, index) => (
                   <div key={index}>
                     <img
@@ -76,8 +80,7 @@ const CardArticuloInsumo: FC<IArticuloInsumo> = ({
                   Precio: <p className="text-red-600">$ {precioVenta}</p>
                 </p>
                 <p className="flex justify-between w-full">
-                  Disponibles:{" "}
-                  <p className="text-red-600"> {stockActual}</p>
+                  Disponibles: <p className="text-red-600"> {stockActual}</p>
                 </p>
               </div>
             </div>

@@ -5,9 +5,11 @@ import { FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IEmpresaShort } from "../../../types/ShortDtos/EmpresaShort";
 import { ISucursal } from "../../../types/Sucursal";
+import { IoSearchOutline } from "react-icons/io5";
+
 
 const Articulos = () => {
-  const { categoria } = useSucursalContext();
+  const { categoria, busqueda, cambiarBusqueda } = useSucursalContext();
 
   const storedSucursal = sessionStorage.getItem("sucursal");
   let sucursal: ISucursal | null = null;
@@ -23,6 +25,10 @@ const Articulos = () => {
     empresa = JSON.parse(storedEmpresa) as IEmpresaShort;
   }
 
+  const handleChange = (event) => {
+    cambiarBusqueda(event.target.value)
+  }
+
   return (
     <div className="pt-20 flex flex-col">
       <div className="w-full flex justify-center">
@@ -35,13 +41,24 @@ const Articulos = () => {
         </Link>
       </div>
       <div className="flex justify-center w-full pt-10">
-      <div className="flex text-center items-center justify-center w-[400px]">
-            <p className="h-1 bg-red-500 w-full"></p>
-            <p className="text-2xl bg-white py-[1px] font-semibold flex p-5 text-black">
-              {categoria}
-            </p>
-            <p className="items-center flex h-1 w-full bg-red-500"> </p>
-          </div>
+        <div className="flex text-center items-center justify-center w-[400px]">
+          <p className="h-1 bg-red-500 w-full"></p>
+          <p className="text-2xl bg-white py-[1px] font-semibold flex p-5 text-black">
+            {categoria}
+          </p>
+          <p className="items-center flex h-1 w-full bg-red-500"> </p>
+        </div>
+      </div>
+      <div className="flex justify-center mt-10">
+        <div className="form-control w-[500px]">
+          <input
+            type="text"
+            placeholder={`Buscar ${categoria}...`}
+            className="input input-bordered rounded w-40 md:w-auto border-red-600 focus:border-red-600"
+            defaultValue={""}
+            onChange={handleChange}
+          />
+        </div>
       </div>
       <ContainerArticulos />
     </div>

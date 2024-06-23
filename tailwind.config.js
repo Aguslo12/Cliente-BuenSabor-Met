@@ -9,6 +9,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        josefinSerif : ['Josefin Sans', 'sans-serif']
+      },
       colors: {
         colorPpal: '#d9754a',
         hoverPpal: '#B05F3C',
