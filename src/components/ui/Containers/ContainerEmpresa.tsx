@@ -20,18 +20,24 @@ const ContainerEmpresa = () => {
 
   return (
     <div className="flex flex-row justify-center flex-wrap mt-4">
-      {empresas.map((empresa) => (
-        <CardEmpresa
-          key={empresa.id} // Use empresa.id as the unique key
-          cuil={empresa.cuil}
-          id={empresa.id}
-          nombre={empresa.nombre}
-          razonSocial={empresa.razonSocial}
-          eliminado={empresa.eliminado}
-          imagenes={empresa.imagenes}
-          sucursales={empresa.sucursales}
-        />
-      ))}
+      {empresas.length <= 0 ? (
+        <div className="bg-red-600 p-5 rounded">
+          <p className="text-white text-3xl">No hay empresas disponibles</p>
+        </div>
+      ) : (
+        empresas.map((empresa) => (
+          <CardEmpresa
+            key={empresa.id} // Use empresa.id as the unique key
+            cuil={empresa.cuil}
+            id={empresa.id}
+            nombre={empresa.nombre}
+            razonSocial={empresa.razonSocial}
+            eliminado={empresa.eliminado}
+            imagenes={empresa.imagenes}
+            sucursales={empresa.sucursales}
+          />
+        ))
+      )}
     </div>
   );
 };
