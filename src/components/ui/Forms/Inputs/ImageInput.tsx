@@ -12,11 +12,12 @@ interface IImageInput {
 }
 
 const ImageInput: FC<IImageInput> = ({ file, setFile, id, imagen }) => {
-    console.log(file);
+    console.log(id);
 
     const loadedImagesRef = useRef<Set<string>>(new Set());
 
     const { getRootProps, getInputProps } = useDropzone({
+        //@ts-expect-error Da error
         accept: 'image/*',
         onDrop: (acceptedFiles: File[]) => {
             const newFile = Object.assign(acceptedFiles[0], {

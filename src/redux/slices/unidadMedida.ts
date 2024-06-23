@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IUnidadMedida } from "../../types/UnidadMedida";
-import { fetchData } from "../../components/api/Fetch";
 
 interface InitialState {
     UnidadesMedida: IUnidadMedida[];

@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { ICategoriaShort } from "../../../types/ShortDtos/CategoriaShort";
-import { PiBowlFood } from "react-icons/pi";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useAppDispatch } from "../../../hooks/redux";
 import { setCategory } from "../../../redux/slices/globalCategory";
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
@@ -10,17 +9,13 @@ import { useSucursalContext } from "../../../hooks/useContext";
 const CardCategoria: FC<ICategoriaShort> = ({
   denominacion,
   eliminado,
-  esInsumo,
   esPadre,
   id,
-  idSucursal,
   subCategorias,
 }) => {
   const dispatch = useAppDispatch();
 
   const { elegirCategoria } = useSucursalContext()
-
-  const idCategoria = useAppSelector((state) => state.GlobalCategory.selected);
 
   const seleccionarCategoria = () => {
     dispatch(setCategory(id));

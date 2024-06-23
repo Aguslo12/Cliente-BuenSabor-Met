@@ -1,6 +1,4 @@
-import { IArticuloManufacturado } from "./ArticuloManufacturado";
 import { IDetallePromo } from "./DetallePromo";
-import { IImagen } from "./Imagen";
 
 export interface IPromos {
   id: number;

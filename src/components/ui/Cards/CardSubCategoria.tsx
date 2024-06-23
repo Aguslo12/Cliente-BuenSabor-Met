@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { PiBowlFood } from "react-icons/pi";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { setCategory } from "../../../redux/slices/globalCategory";
 import { Link } from "react-router-dom";
@@ -9,7 +8,6 @@ import { FaChevronRight } from "react-icons/fa";
 const CardSubCategoria: FC<ICategoriaShortDto> = ({
   denominacion,
   eliminado,
-  esInsumo,
   esPadre,
   id,
   subCategorias,

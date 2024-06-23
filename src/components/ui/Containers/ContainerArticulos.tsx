@@ -5,7 +5,6 @@ import CardArticulo from "../Cards/CardArticulo";
 import { useAppSelector } from "../../../hooks/redux";
 import { IArticuloInsumo } from "../../../types/ArticuloInsumo";
 import CardArticuloInsumo from "../Cards/CardArticuloInsumo";
-import { ISucursal } from "../../../types/Sucursal";
 import { useSucursalContext } from "../../../hooks/useContext";
 
 export const ContainerArticulos = () => {
@@ -20,12 +19,6 @@ export const ContainerArticulos = () => {
     []
   );
   const [loading, setLoading] = useState<boolean>(false);
-  const storedSucursal = sessionStorage.getItem("sucursal");
-  let sucursal: ISucursal | null = null;
-
-  if (storedSucursal) {
-    sucursal = JSON.parse(storedSucursal) as ISucursal;
-  }
 
   const idCategoria = useAppSelector((state) => state.GlobalCategory.selected);
 

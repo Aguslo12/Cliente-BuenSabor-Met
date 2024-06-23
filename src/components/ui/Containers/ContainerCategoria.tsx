@@ -7,7 +7,6 @@ import CardCategoria from "../Cards/CardCategoria";
 
 const ContainerCategoria = () => {
   const backend = new BackendMethods();
-  const [loading, setLoading] = useState<boolean>(false);
 
   const sucursalSeleccionada = useAppSelector(
     (state) => state.GlobalSucursal.selected
@@ -30,7 +29,6 @@ const ContainerCategoria = () => {
       setCategorias(res);
     };
     traerCategorias();
-    setLoading(true);
   }, [sucursalSeleccionada]);
 
   return (

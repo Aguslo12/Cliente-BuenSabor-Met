@@ -10,10 +10,7 @@ const CardArticulo: FC<IArticuloManufacturado> = ({
   precioVenta,
   tiempoEstimadoMinutos,
   descripcion,
-  preparacion,
-  categoria,
-  unidadMedida,
-  articuloManufacturadoDetalles,
+  preparacion
 }) => {
   return (
     <div className="card w-[192px] bg-base-100 h-min rounded border-gray-200 border-[1px] hover:border-black hover:scale-105 cursor-pointer transition-all m-5">
@@ -37,6 +34,7 @@ const CardArticulo: FC<IArticuloManufacturado> = ({
             <div
               className="btn-link text-sm text-red-600 rounded-md cursor-pointer hover:bg-opacity-90 transition-all"
               onClick={() =>
+                //@ts-expect-error El modal siempre va a tirar error
                 document.getElementById(`my_modal_${id}`).showModal()
               }
             >

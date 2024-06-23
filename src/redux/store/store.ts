@@ -1,16 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
-import storageSession from "redux-persist/lib/storage/session"; // use sessionStorage for web
+import { persistStore } from "redux-persist";
 import GlobalSearch from "../slices/search";
 import GlobalUpdated from "../slices/globalUpdate";
 import GlobalCategory from "../slices/globalCategory";
 import GlobalSucursal from "../slices/globalSucursal";
 import GlobalIdEmpresa from "../slices/idEmpresa";
 
-const persistConfig = {
-  key: "root",
-  storage: storageSession,
-};
 
 //Esta sección sirve para poder persistir los datos entre sesiones, asi no hay problemas de pérdida de datos o errores
 

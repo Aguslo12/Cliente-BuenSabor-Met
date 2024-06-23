@@ -1,10 +1,5 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { IArticuloInsumo } from "../../../types/ArticuloInsumo";
-import { useCarrito } from "../../../hooks/useContext";
-import { BackendMethods } from "../../../services/BackendClient";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import { BsFillCartFill } from "react-icons/bs";
-import { IDetallePedido } from "../../../types/DetallePedido";
 import { Carousel } from "react-responsive-carousel";
 
 const CardArticuloInsumo: FC<IArticuloInsumo> = ({
@@ -13,8 +8,7 @@ const CardArticuloInsumo: FC<IArticuloInsumo> = ({
   imagenes,
   precioVenta,
   esParaElaborar,
-  stockActual,
-  categoria,
+  stockActual
 }) => {
   return (
     <div>
@@ -41,6 +35,7 @@ const CardArticuloInsumo: FC<IArticuloInsumo> = ({
             <div
               className="btn-link text-sm text-red-600 rounded-md cursor-pointer hover:bg-opacity-90 transition-all"
               onClick={() =>
+                //@ts-expect-error El modal siempre va a tirar error.
                 document.getElementById(`my_modal_${id}`).showModal()
               }
             >

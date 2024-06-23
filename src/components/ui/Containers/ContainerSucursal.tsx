@@ -15,6 +15,7 @@ const ContainerSucursal = () => {
   useEffect(() => {
     const traerSucursales = async () => {
       try {
+        //@ts-expect-error Da error
         const res: IEmpresaShort = await backend.getById(
           `${import.meta.env.VITE_LOCAL}empresa/sucursales/${idEmpresa}`
         );

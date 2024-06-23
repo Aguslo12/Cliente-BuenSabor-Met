@@ -14,7 +14,6 @@ interface ContainerSubCategoriaNum {
 
 const ContainerSubCategoria: FC<ContainerSubCategoriaNum> = ({idCategoriaPadre}) => {
   const backend = new BackendMethods();
-  const [loading, setLoading] = useState<boolean>(false);
   const storedSucursal = sessionStorage.getItem("sucursal");
   let sucursal: ISucursal | null = null;
 
@@ -40,7 +39,6 @@ const ContainerSubCategoria: FC<ContainerSubCategoriaNum> = ({idCategoriaPadre})
       setCategoria(res);
     };
     traerCategorias();
-    setLoading(true);
   }, [idCategoriaPadre]);
 
   return (

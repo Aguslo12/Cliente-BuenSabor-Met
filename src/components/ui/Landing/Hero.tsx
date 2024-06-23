@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { FaAngleDoubleDown } from "react-icons/fa";
 
 const Hero = () => {

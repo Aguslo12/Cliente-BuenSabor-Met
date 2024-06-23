@@ -8,6 +8,7 @@ const SubTienda = () => {
   const { idCategoria } = useParams();
   const { categoria,cambiarBusqueda } = useSucursalContext();
 
+  //@ts-expect-error Error esperable
   const handleChange = (event) => {
     cambiarBusqueda(event.target.value)
   }

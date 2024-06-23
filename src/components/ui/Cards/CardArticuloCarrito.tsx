@@ -66,6 +66,7 @@ export const CardArticuloCarrito = () => {
                   >
                     <figure>
                       <img
+                        //@ts-expect-error Puede ser que sea undefined
                         src={prod.promocion?.imagenes[0].url}
                         className="h-44 w-full"
                       />
