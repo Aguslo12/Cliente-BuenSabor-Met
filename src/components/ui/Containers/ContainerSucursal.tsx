@@ -17,7 +17,7 @@ const ContainerSucursal = () => {
       try {
         //@ts-expect-error Da error
         const res: IEmpresaShort = await backend.getById(
-          `${import.meta.env.VITE_LOCAL}empresa/sucursales/${idEmpresa}`
+          `https://back-cliente.onrender.com/empresa/noEliminados/empresa/sucursales/${idEmpresa}`
         );
         const sucursales: ISucursalShort[] = res.sucursales;
         SetSucursales(sucursales);

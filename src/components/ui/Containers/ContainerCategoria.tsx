@@ -24,7 +24,7 @@ const ContainerCategoria = () => {
   useEffect(() => {
     const traerCategorias = async () => {
       const res: ICategoriaShort[] = (await backend.getAll(
-        `${import.meta.env.VITE_LOCAL}sucursal/getCategorias/${sucursal?.id}`
+        `https://back-cliente.onrender.com/empresa/noEliminados/sucursal/getCategorias/${sucursal?.id}`
       )) as ICategoriaShort[];
       setCategorias(res);
     };

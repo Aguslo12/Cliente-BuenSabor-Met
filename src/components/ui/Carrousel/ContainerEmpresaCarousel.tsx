@@ -12,7 +12,7 @@ const ContainerEmpresaCarousel = () => {
   useEffect(() => {
     const traerEmpresas = async () => {
       const res: IEmpresaShort[] = (await backend.getAll(
-        `${import.meta.env.VITE_LOCAL}empresa/noEliminados`
+        `https://back-cliente.onrender.com/empresa/noEliminados`
       )) as IEmpresaShort[];
       setEmpresas(res);
     };

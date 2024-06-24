@@ -34,7 +34,7 @@ const ContainerSubCategoria: FC<ContainerSubCategoriaNum> = ({idCategoriaPadre})
   useEffect(() => {
     const traerCategorias = async () => {
       const res: ICategoriaShort = (await backend.getById(
-        `${import.meta.env.VITE_LOCAL}categoria/${idCategoriaPadre}`
+        `https://back-cliente.onrender.com/empresa/noEliminados/categoria/${idCategoriaPadre}`
       )) as ICategoriaShort;
       setCategoria(res);
     };
