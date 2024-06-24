@@ -22,10 +22,8 @@ export const ContainerPromocion = () => {
     const traerPromos = async () => {
       setLoading(true);
       const res: IPromosShort[] = (await backend.getAll(
-        `https://back-cliente.onrender.com/empresa/noEliminados/sucursal/getPromociones/${sucursal?.id}`
+        `${import.meta.env.VITE_LOCAL}sucursal/getPromociones/${sucursal?.id}`
       )) as IPromosShort[];
-      console.log("PROMOSSS")
-      console.log(res)
       setLoading(false);
       SetPromociones(res);
     };

@@ -22,16 +22,16 @@ export const CardPromocion: FC<IPromosShort> = ({
         </figure>
       )}
       <div className="w-full flex-col">
-        <div className="flex flex-col mt-2 justify-center text-balance w-full items-center">
+        <div className="flex flex-col mt-2 justify-center  text-center w-full items-center">
           {detalles.map((detalle) => (
-            <div className="text-black">
+            <div className="text-black flex flex-col">
               {detalle.articulosManufacturados ? (
                 <p>
                   {detalle.cantidad}-
                   {detalle.articulosManufacturados?.denominacion}
                 </p>
               ) : (
-                <p>
+                <p className="flex justify-center text-center">
                   {detalle.cantidad}-{detalle.insumos?.denominacion}{" "}
                 </p>
               )}

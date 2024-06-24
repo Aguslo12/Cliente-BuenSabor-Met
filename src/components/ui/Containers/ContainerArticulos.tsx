@@ -27,11 +27,11 @@ export const ContainerArticulos = () => {
       setLoading(true);
 
       const res: IArticuloManufacturado[] = (await backend.getAll(
-        `https://back-cliente.onrender.com/empresa/noEliminados/ArticuloManufacturado/noEliminados`
+        `${import.meta.env.VITE_LOCAL}ArticuloManufacturado/noEliminados`
       )) as IArticuloManufacturado[];
 
       const ress: IArticuloInsumo[] = (await backend.getAll(
-        `https://back-cliente.onrender.com/empresa/noEliminados/ArticuloInsumo/noEliminados`
+        `${import.meta.env.VITE_LOCAL}ArticuloInsumo/noEliminados`
       )) as IArticuloInsumo[];
 
       const articulosInsFiltrados: IArticuloInsumo[] = ress.filter(
