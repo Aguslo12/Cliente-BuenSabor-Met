@@ -21,8 +21,8 @@ const ContainerEmpresa = () => {
   return (
     <div className="flex flex-row justify-center flex-wrap mt-4">
       {empresas.length <= 0 ? (
-        <div className="bg-red-600 p-5 rounded">
-          <p className="text-white text-3xl">No hay empresas disponibles</p>
+        <div className="bg-red-600 p-2 md:p-5 mb-10 rounded">
+          <p className="text-white text-xl md:text-3xl">No hay empresas disponibles</p>
         </div>
       ) : (
         empresas.map((empresa) => (

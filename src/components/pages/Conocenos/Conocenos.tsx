@@ -5,7 +5,7 @@ export const Conocenos = () => {
     <div>
       <div className="hero h-[500px] bg-fondoConocenos relative flex flex-col justify-center items-center px-10">
         <div className="absolute inset-0 " />
-        <div className="hero-content lg:flex-row bg-opacity-90 rounded-xl p-5">
+        <div className="hero-content mb-20 md:mb-14 bg-opacity-90 rounded-xl p-5">
           <div className="p-5 rounded-xl bg-opacity-20 flex flex-col">
             <h1 className="flex justify-center flex-col text-3xl md:text-5xl text-center font-bold text-white">
               SOBRE
